@@ -1,5 +1,9 @@
 # --- memePlayblast Script ---
 
+import sys
+sys.path.insert(0,' -------- Input memePlayblast script path -------- ')
+# memePlayblast script path Example : 'C:\Users\~UserName~\Documents\maya\2016\scripts\memePlayblast' 
+
 import playblastOptions
 reload(playblastOptions)
 
