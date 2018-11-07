@@ -122,10 +122,16 @@ class hudDisplay(object):
 
 
     def hudShotgun(self,project_name,shot_name):
-        import connect
-        reload(connect)
-        comp_cam, time_of_day = connect.getHudShotgun(project_name,shot_name)
-        return comp_cam, time_of_day
+        try:
+            import connect
+            reload(connect)
+
+            comp_cam, time_of_day = connect.getHudShotgun(project_name,shot_name)
+            return comp_cam, time_of_day
+
+        except ImportError as E:
+            return ' ', ' '
+            pass
 
     def hudShotFrame(self) :
         # FRAME : 0001/0047
