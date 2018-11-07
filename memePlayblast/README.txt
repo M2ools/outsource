@@ -1,16 +1,7 @@
-# --- memePlayblast Script ---
+1. Unzip "outsource.zip"
 
-import sys
-sys.path.insert(0,' -------- Input memePlayblast script path -------- ')
-# memePlayblast script path Example : 'C:\Users\~UserName~\Documents\maya\2016\scripts\memePlayblast' 
+2. Copy folder : "memePlayblast" to your ~Document/maya/script
 
-import playblastOptions
-reload(playblastOptions)
+3. Copy folder : "shelves" to ~Document/maya/2016/prefs/shelves
 
-mov_path = playblastOptions.run()
-result = cmds.confirmDialog( title='Playblast', message='Finish.', button=['OK'])
-if result:
-    import subprocess
-    subprocess.Popen('explorer /select,"%s"' %mov_path[0][0].replace('/','\\'))
-
-# --- end ---
+4. Open MAYA You will see shelves memePlayblast and you can use that shelves to playblast
