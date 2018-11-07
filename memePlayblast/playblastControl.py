@@ -35,7 +35,10 @@ def getFileName(shot_node_name=None, task_code=None):
     project  = fileName[1]
     episode  = fileName[2]
 
-    frame_rate, resolution, cut_Duration = getShotgunEntity(project, shot_node_name)
+    import connect
+    reload(connect)
+
+    cut_Duration = connect.getCutDuration(shot_node_name)
 
     local_drive  = os.getenv('USERPROFILE').replace('\\','/')
     live_drive   = 'L:'
@@ -43,23 +46,7 @@ def getFileName(shot_node_name=None, task_code=None):
     play_path    = '%s/LIVE/%s/%s/COMMON/MEDIA/%s_%s.mov' % (local_drive,project,episode,task_code,shot_node_name)
     audio_path   = '%s/%s/%s/COMMON/MEDIA/AUD_%s.wav' % (live_drive,project,episode,shot_node_name)
 
-    return play_path, audio_path, task_code, file_path, frame_rate, resolution, cut_Duration
-
-def getShotgunEntity(project,shot_node_name):
-
-    import connect
-    reload(connect)
-
-    frame_rate = 0
-    resolution = None
-
-    prj_ent     = connect.getProjectConfig(project)
-    frame_rate  = prj_ent['sg_fps']
-    resolution  = tuple(prj_ent['sg_resolution'].split('x'))
-
-    cut_Duration    = connect.getCutDuration(shot_node_name)
-
-    return frame_rate, resolution, cut_Duration['sg_cut_duration']
+    return play_path, audio_path, task_code, file_path, cut_Duration
 
 def doPlayblast(play_path,audio_path,start,end,resolution=(1920,1080)):
     print '-- making playblast'
@@ -76,7 +63,7 @@ def doPlayblast(play_path,audio_path,start,end,resolution=(1920,1080)):
                                 viewer			= 0,
                                 showOrnaments	= 1,
                                 framePadding	= 4,
-                                widthHeight		= [int(resolution[0]) ,int(resolution[1])],
+                                widthHeight		= [1920 ,1080],
                                 percent			= 100,
                                 compression		= 'none',
                                 offScreen		= 1,
@@ -84,7 +71,7 @@ def doPlayblast(play_path,audio_path,start,end,resolution=(1920,1080)):
                                 )
     return resultPath
 
-def convertFile(source, destination, frameRate):
+def convertFile(source, destination):
     import subprocess
     print '-- converting --'
 
@@ -93,7 +80,7 @@ def convertFile(source, destination, frameRate):
     source = source + '.avi'
 
     args = [ PROG_FFMPEG, '-y', '-i', '%s' % source, '-r',
-             '%s' % frameRate, '-vcodec', 'libx264', '-x264-params', 'b-pyramid=0', '-vprofile', 'baseline',
+             '24' , '-vcodec', 'libx264', '-x264-params', 'b-pyramid=0', '-vprofile', 'baseline',
              '-crf', '22', '-threads', '2', '-pix_fmt', 'yuv420p', '-max_muxing_queue_size', '1024', '-f', 'mov', '%s' % destination]
 
     startupinfo = subprocess.STARTUPINFO()
@@ -107,17 +94,17 @@ def convertFile(source, destination, frameRate):
 
 def setPlayblast(shot_node, start, end, camera, AOswitch=True, showHUD=True, addLight=True, convert=True):
 
-    play_path, audio_path, task_code, file_path, frameRate, resolution, cut_Duration = getFileName(shot_node_name=shot_node)
+    play_path, audio_path, task_code, file_path, cut_Duration = getFileName(shot_node_name=shot_node)
     cam_panel,viewport_data,ao_data = viewportDisplay.setPlayblastViewport(camera, AO=AOswitch, displayLight=addLight)
 
     if showHUD:
         hud = hudDisplay.hudDisplay(shot_node, start, end, camera, task_name=PROCESSCODE_TO_TASK[task_code])
 
-    resultPath = doPlayblast(play_path,audio_path,start,end,resolution)
+    resultPath = doPlayblast(play_path,audio_path,start,end)
 
     if convert:
         # convert AVI to MOV
-        convertFile(resultPath, play_path, frameRate)
+        convertFile(resultPath, play_path)
 
     viewportDisplay.restorePlayblastViewoport(cam_panel,viewport_data,ao_data)
 
