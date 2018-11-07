@@ -1,0 +1,39 @@
+global proc shelf_memePlayblast () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "# --- memePlayblast Script ---\n\nfrom memePlayblast import playblastOptions\nreload(playblastOptions)\n\nmov_path = playblastOptions.run()\nresult = cmds.confirmDialog( title='Playblast', message='Finish.', button=['OK'])\nif result:\n    import subprocess\n    subprocess.Popen('explorer /select,\"%s\"' %mov_path[0][0].replace('/','\\\\'))\n\n# --- end ---" 
+        -enableBackground 0
+        -align "center" 
+        -label "memePlayblast" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "Play" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "playblast.png" 
+        -image1 "playblast.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "# --- memePlayblast Script ---\n\nfrom memePlayblast import playblastOptions\nreload(playblastOptions)\n\nmov_path = playblastOptions.run()\nresult = cmds.confirmDialog( title='Playblast', message='Finish.', button=['OK'])\nif result:\n    import subprocess\n    subprocess.Popen('explorer /select,\"%s\"' %mov_path[0][0].replace('/','\\\\'))\n\n# --- end ---" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 
