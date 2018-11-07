@@ -35,18 +35,13 @@ def getFileName(shot_node_name=None, task_code=None):
     project  = fileName[1]
     episode  = fileName[2]
 
-    import connect
-    reload(connect)
-
-    cut_Duration = connect.getCutDuration(shot_node_name)
-
     local_drive  = os.getenv('USERPROFILE').replace('\\','/')
     live_drive   = 'L:'
 
     play_path    = '%s/LIVE/%s/%s/COMMON/MEDIA/%s_%s.mov' % (local_drive,project,episode,task_code,shot_node_name)
     audio_path   = '%s/%s/%s/COMMON/MEDIA/AUD_%s.wav' % (live_drive,project,episode,shot_node_name)
 
-    return play_path, audio_path, task_code, file_path, cut_Duration
+    return play_path, audio_path, task_code, file_path
 
 def doPlayblast(play_path,audio_path,start,end,resolution=(1920,1080)):
     print '-- making playblast'
@@ -94,7 +89,7 @@ def convertFile(source, destination):
 
 def setPlayblast(shot_node, start, end, camera, AOswitch=True, showHUD=True, addLight=True, convert=True):
 
-    play_path, audio_path, task_code, file_path, cut_Duration = getFileName(shot_node_name=shot_node)
+    play_path, audio_path, task_code, file_path = getFileName(shot_node_name=shot_node)
     cam_panel,viewport_data,ao_data = viewportDisplay.setPlayblastViewport(camera, AO=AOswitch, displayLight=addLight)
 
     if showHUD:
