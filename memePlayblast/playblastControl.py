@@ -97,6 +97,14 @@ def setPlayblast(shot_node, start, end, camera, AOswitch=True, showHUD=True, add
     play_path, audio_path, task_code, file_path, cut_Duration = getFileName(shot_node_name=shot_node)
     cam_panel,viewport_data,ao_data = viewportDisplay.setPlayblastViewport(camera, AO=AOswitch, displayLight=addLight)
 
+    startseq = start + 1
+    endseq = end - 1
+    duration = endseq - startseq + 1
+    if cut_Duration == duration:
+        print 'match'
+        start = startseq
+        end = endseq
+
     if showHUD:
         hud = hudDisplay.hudDisplay(shot_node, start, end, camera, task_name=PROCESSCODE_TO_TASK[task_code])
 
