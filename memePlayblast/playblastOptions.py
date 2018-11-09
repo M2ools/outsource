@@ -10,7 +10,7 @@ import maya.cmds as cmds
 import playblastControl
 reload(playblastControl)
 
-def run(pre_roll=0, ao=True):
+def run(pre_roll=1, ao=True):
 
     movpaths = []
     shot_selected = cmds.ls(sl=True, type='shot')
@@ -18,8 +18,8 @@ def run(pre_roll=0, ao=True):
     shot_list = shot_selected if shot_selected else cmds.sequenceManager(listShots=True)
 
     for shot_node in shot_list:
-        start = cmds.getAttr(shot_node + '.sequenceStartFrame') - pre_roll
-        end   = cmds.getAttr(shot_node + '.sequenceEndFrame') + (1 if pre_roll else 0)
+        start = cmds.getAttr(shot_node + '.sequenceStartFrame') + pre_roll
+        end   = cmds.getAttr(shot_node + '.sequenceEndFrame') - (1 if pre_roll else 0)
         camera = cmds.shot(shot_node, q=True, currentCamera=True)
 
         print shot_node, start, end, camera, ao
