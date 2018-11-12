@@ -1,6 +1,6 @@
 1. Unzip "outsource.zip"
 
-2. Copy folder : "memePlayblast" and "memeExplorer" to your ~Document/maya/script
+2. Copy folder : "Playblast" and "Xplorer" to your ~Document/maya/script
 
 3. Copy folder : "shelves" to your ~Document/maya/2016/prefs/shelves
 
