@@ -35,5 +35,67 @@ global proc shelf_M2animation () {
         -commandRepeatable 1
         -flat 1
     ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "from memeXplorer import setImportor\nreload(setImportor)\n\nmainWin = setImportor.getMayaWindow()\nconApp = setImportor.setImportor(mainWin)\n\n" 
+        -enableBackground 0
+        -align "center" 
+        -label "loadSet" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "Set" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/bel.chanathan/Documents/maya/2016/prefs/icons/Toicon-icon-fandom-build.png" 
+        -image1 "C:/Users/bel.chanathan/Documents/maya/2016/prefs/icons/Toicon-icon-fandom-build.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from memeXplorer import setImportor\nreload(setImportor)\n\nmainWin = setImportor.getMayaWindow()\nconApp = setImportor.setImportor(mainWin)\n\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "from memeXplorer import memeLooks\nreload(memeLooks)\n\nmemeLooks.loadLooks()\n" 
+        -enableBackground 0
+        -align "center" 
+        -label "applyLooks" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "Looks" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polyApplyColor.png" 
+        -image1 "polyApplyColor.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from memeXplorer import memeLooks\nreload(memeLooks)\n\nmemeLooks.loadLooks()\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
 
 } 
