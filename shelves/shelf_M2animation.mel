@@ -38,8 +38,8 @@ global proc shelf_M2animation () {
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 35
-        -height 35
+        -width 39
+        -height 39
         -manage 1
         -visible 1
         -preventOverride 0
@@ -56,8 +56,8 @@ global proc shelf_M2animation () {
         -imageOverlayLabel "Set" 
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
-        -image "C:/Users/bel.chanathan/Documents/GitHub/outsource/memeXplorer/Icon/loadSet.png" 
-        -image1 "C:/Users/bel.chanathan/Documents/GitHub/outsource/memeXplorer/Icon/loadSet.png" 
+        -image "Repeat.png" 
+        -image1 "Repeat.png" 
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
