@@ -15,7 +15,7 @@ global proc shelf_M2animation () {
         -annotation "# --- memePlayblast Script ---\n\nfrom memePlayblast import playblastOptions\nreload(playblastOptions)\n\nmov_path = playblastOptions.run()\nresult = cmds.confirmDialog( title='Playblast', message='Finish.', button=['OK'])\nif result:\n    import subprocess\n    subprocess.Popen('explorer /select,\"%s\"' %mov_path[0][0].replace('/','\\\\'))\n\n# --- end ---" 
         -enableBackground 0
         -align "center" 
-        -label "memePlayblast" 
+        -label "Playblast" 
         -labelOffset 0
         -rotation 0
         -flipX 0
@@ -56,12 +56,12 @@ global proc shelf_M2animation () {
         -imageOverlayLabel "Set" 
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
-        -image "C:/Users/bel.chanathan/Documents/maya/2016/prefs/icons/Toicon-icon-fandom-build.png" 
-        -image1 "C:/Users/bel.chanathan/Documents/maya/2016/prefs/icons/Toicon-icon-fandom-build.png" 
+        -image "C:/Users/bel.chanathan/Documents/GitHub/outsource/memeXplorer/Icon/loadSet.png" 
+        -image1 "C:/Users/bel.chanathan/Documents/GitHub/outsource/memeXplorer/Icon/loadSet.png" 
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "from memeXplorer import setImportor\nreload(setImportor)\n\nmainWin = setImportor.getMayaWindow()\nconApp = setImportor.setImportor(mainWin)\n\n" 
+        -command "from Xplorer import loadSet\nreload(loadSet)\n\nmainWin = loadSet.getMayaWindow()\nconApp = loadSet.setImporter(mainWin)\n\n" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
@@ -77,7 +77,7 @@ global proc shelf_M2animation () {
         -annotation "from memeXplorer import memeLooks\nreload(memeLooks)\n\nmemeLooks.loadLooks()\n" 
         -enableBackground 0
         -align "center" 
-        -label "applyLooks" 
+        -label "loadLooks" 
         -labelOffset 0
         -rotation 0
         -flipX 0
@@ -92,7 +92,7 @@ global proc shelf_M2animation () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "from memeXplorer import memeLooks\nreload(memeLooks)\n\nmemeLooks.loadLooks()\n" 
+        -command "from Xplorer import loadLooks\nreload(loadLooks)\n\nloadLooks.loadLooks()\n" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
