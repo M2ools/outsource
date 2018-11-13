@@ -15,7 +15,7 @@ global proc shelf_M2animation () {
         -annotation "# --- memePlayblast Script ---\n\nfrom memePlayblast import playblastOptions\nreload(playblastOptions)\n\nmov_path = playblastOptions.run()\nresult = cmds.confirmDialog( title='Playblast', message='Finish.', button=['OK'])\nif result:\n    import subprocess\n    subprocess.Popen('explorer /select,\"%s\"' %mov_path[0][0].replace('/','\\\\'))\n\n# --- end ---" 
         -enableBackground 0
         -align "center" 
-        -label "memePlayblast" 
+        -label "Playblast" 
         -labelOffset 0
         -rotation 0
         -flipX 0
@@ -31,6 +31,68 @@ global proc shelf_M2animation () {
         -marginWidth 1
         -marginHeight 1
         -command "# --- memePlayblast Script ---\n\nfrom memePlayblast import playblastOptions\nreload(playblastOptions)\n\nmov_path = playblastOptions.run()\nresult = cmds.confirmDialog( title='Playblast', message='Finish.', button=['OK'])\nif result:\n    import subprocess\n    subprocess.Popen('explorer /select,\"%s\"' %mov_path[0][0].replace('/','\\\\'))\n\n# --- end ---" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 39
+        -height 39
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "from memeXplorer import setImportor\nreload(setImportor)\n\nmainWin = setImportor.getMayaWindow()\nconApp = setImportor.setImportor(mainWin)\n\n" 
+        -enableBackground 0
+        -align "center" 
+        -label "loadSet" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "Set" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "Repeat.png" 
+        -image1 "Repeat.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from Xplorer import loadSet\nreload(loadSet)\n\nmainWin = loadSet.getMayaWindow()\nconApp = loadSet.setImporter(mainWin)\n\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "from memeXplorer import memeLooks\nreload(memeLooks)\n\nmemeLooks.loadLooks()\n" 
+        -enableBackground 0
+        -align "center" 
+        -label "loadLooks" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "Looks" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polyApplyColor.png" 
+        -image1 "polyApplyColor.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from Xplorer import loadLooks\nreload(loadLooks)\n\nloadLooks.loadLooks()\n" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
