@@ -38,8 +38,8 @@ global proc shelf_M2animation () {
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 39
-        -height 39
+        -width 35
+        -height 35
         -manage 1
         -visible 1
         -preventOverride 0
@@ -93,6 +93,37 @@ global proc shelf_M2animation () {
         -marginWidth 1
         -marginHeight 1
         -command "from Xplorer import loadLooks\nreload(loadLooks)\n\nloadLooks.loadLooks()\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "from Shotgun import sentToShotguns\nreload(sentToShotguns)\n\nresult = sentToShotguns.sendToShotgun()\ncmds.confirmDialog( title='Publish', message='Publish Finish.', button=['OK'])" 
+        -enableBackground 0
+        -align "center" 
+        -label "sendToShotgun" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "Shotgun" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from Shotgun import sentToShotguns\nreload(sentToShotguns)\n\nresult = sentToShotguns.sendToShotgun()\ncmds.confirmDialog( title='Publish', message='Publish Finish.', button=['OK'])" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
