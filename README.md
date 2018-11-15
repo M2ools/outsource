@@ -1,7 +1,7 @@
 # m2ools outsource
 Tools for outsource crew
 
-1. Unzip "outsource.zip"
+1. Unzip "outsource-master.zip"
 
 2. Copy folder : "Playblast" , "Shotgun" and "Xplorer" to your ~Document/maya/script
 
