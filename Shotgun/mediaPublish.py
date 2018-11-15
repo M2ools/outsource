@@ -6,9 +6,6 @@ import getpass
 domain_link = 'https://m2a.shotgunstudio.com'
 login       = 'seveneleven'
 password    = 'outsourceStudio711'
-# key_name    = 'meme_mediaVersion'
-# script_key  = 'seyfmyc9J&haoaldrnjlbczfl'
-
 
 PROCESSCODE_TO_TASK = {'LAY': 'layout',
                        'ANM': 'animation',
@@ -28,13 +25,6 @@ default_thumb_path = '%s/icons/XPLORER.png' % (os.path.dirname(os.path.abspath(_
 def connect():
     from Shotgun import shotgun_api3
     return shotgun_api3.Shotgun(domain_link,login = login, password = password)
-
-# def connect():
-#     import sys
-#     if not 'M:/SCRIPTS/PACKAGES/python27/Lib/site-packages' in sys.path:
-#         sys.path.append('M:/SCRIPTS/PACKAGES/python27/Lib/site-packages')
-#     import shotgun_api3
-#     return shotgun_api3.Shotgun(domain_link, key_name, script_key)
 
 def setup_parser(arguments, title):
     parser = argparse.ArgumentParser(description=title, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -77,8 +67,8 @@ class Shot(object):
         self.movie_file   = movie_path
         self.path_frames  = None
         self.version_name = version_name
-        self.user = user if user else getpass.getuser()
-        self.user_ent = self.SG.find_one('HumanUser', filters = [['name', 'is', self.user]], fields = ['name', 'email', 'id', 'sg_localuser'])
+        self.user = 'studio.seveneleven'
+        self.user_ent = self.SG.find_one('HumanUser', filters = [['id', 'is', 895]], fields = ['name', 'email', 'id', 'sg_localuser'])
 
         self.getShotgunInfo(meme_task)
 
@@ -154,9 +144,6 @@ class Shot(object):
 
         if framePaths:
             data['sg_path_to_frames'] = framePaths.replace('/','\\\\')
-
-        import pprint
-        pprint.pprint(data)
 
         versionEnt = self.SG.create('Version', data)
 
