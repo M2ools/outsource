@@ -1,4 +1,4 @@
-1. Unzip "outsource.zip"
+1. Unzip "outsource-individual.zip"
 
 2. Copy folder : "Playblast" and "Xplorer" to your ~Document/maya/script
 
