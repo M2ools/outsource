@@ -68,7 +68,7 @@ class Shot(object):
         self.path_frames  = None
         self.version_name = version_name
         self.user = 'studio.seveneleven'
-        self.user_ent = self.SG.find_one('HumanUser', filters = [['name', 'is', self.user]], fields = ['name', 'email', 'id', 'sg_localuser'])
+        self.user_ent = self.SG.find_one('HumanUser', filters = [['id', 'is', 895]], fields = ['name', 'email', 'id', 'sg_localuser'])
 
         self.getShotgunInfo(meme_task)
 
