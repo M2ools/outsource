@@ -10,7 +10,6 @@ from PySide import QtGui as QtGui
 from PySide import QtCore
 
 #Import GUI
-# from Qt import QtCompat
 from Xplorer.Qt import QtCompat
 
 op_sys = platform.system()
