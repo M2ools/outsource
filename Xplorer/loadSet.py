@@ -10,7 +10,6 @@ from PySide import QtGui as QtGui
 from PySide import QtCore
 
 #Import GUI
-# from Qt import QtCompat
 from Xplorer.Qt import QtCompat
 
 op_sys = platform.system()
@@ -130,15 +129,20 @@ class setImporter(QtGui.QMainWindow):
     def getInfo(self):
 
         file_path   = cmds.file(q=True, sn=True)
-        split_path  = os.path.basename(file_path).split('_')
-        task_code   = split_path[0]
-        prj         = split_path[1]
-        ep          = split_path[2]
-        shot        = split_path[3].split('.')[0]
 
-        passive_Name    = 'PAS_%s_%s_%s' % (prj, ep, shot)
-        setdress_Name   = 'SDRS_%s_%s_%s' % (prj, ep, shot)
+        if not file_path:
+            cmds.confirmDialog( title='Error', message='Please open shot before loadSet', button=['OK'])
 
-        passiveLIVE = 'L:/%s/%s/%s/PASSIVE/%s.json' % (prj, ep, shot,passive_Name)
+        else:
+            split_path  = os.path.basename(file_path).split('_')
+            task_code   = split_path[0]
+            prj         = split_path[1]
+            ep          = split_path[2]
+            shot        = split_path[3].split('.')[0]
 
-        return passiveLIVE
+            passive_Name    = 'PAS_%s_%s_%s' % (prj, ep, shot)
+            setdress_Name   = 'SDRS_%s_%s_%s' % (prj, ep, shot)
+
+            passiveLIVE = 'L:/%s/%s/%s/PASSIVE/%s.json' % (prj, ep, shot,passive_Name)
+
+            return passiveLIVE
