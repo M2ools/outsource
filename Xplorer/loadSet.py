@@ -56,28 +56,6 @@ class setImporter(QtGui.QMainWindow):
 
         if not refFile:
             refFile = self.ui.textureLineEdit.text().replace('\\', '/')
-            if cmds.tabLayout('memeTabsUITabLayout', q=True, st=True) == 'memeAssetsFormLayout':
-                currentAssetType = cmds.iconTextScrollList('memeAssetTypeList', q=True, si=True)
-                currentAsset = cmds.iconTextScrollList('memeAssetList', q=True, si=True)
-                currentVariant = cmds.iconTextScrollList('memeAssetVariantList', q=True, si=True)
-                if currentAssetType[0] == 'SET':
-                    if currentAsset:
-                        refFile = 'L:/%s/SET/%s/ASSEMBLY/ASM_%s_SET_%s' % (currentAsset[0], currentShow, currentAsset[0])
-                        if currentVariant:
-                            refFile = '%s__%s.json' % (refFile, currentVariant)
-                            if not os.path.exists(refFile):
-                                return
-                        else:
-                            refFile = '%s.json' % refFile
-                            if not os.path.exists(refFile):
-                                return
-                    else:
-                        return
-                else:
-                    return
-            else:
-                return
-
         nameSpaceCounter = {}
 
         for each in cmds.file(q=True, r=True):
