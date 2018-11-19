@@ -1,6 +1,11 @@
 import maya.cmds as cmds
 
 def setPlayblastViewport(camera, AO=True, viewport2=True, displayLight=True):
+
+    if not camera:
+        print "Error : Camera Not found. Please check shot camera in camera sequencer"
+        return
+
     cam_panel     = controlPanels(camera)
     viewport_data,ao_data = collectViewportData(cam_panel)
 
@@ -102,7 +107,6 @@ def setShowViewport(cam_panel, isAO=True, isViewport2=True, isLight=True):
     cmds.setAttr('hardwareRenderingGlobals.ssaoSamples',16)
 
 def addLight(camera, add=True):
-
     if not cmds.objExists(camera):
         print 'No camera exists', camera
 
@@ -122,7 +126,10 @@ def addLight(camera, add=True):
 
         if cmds.objExists(camera):
             cam_grp = cmds.listRelatives(camera,ap=True)
-            cmds.parentConstraint(cam_grp, direcLight_grpName, weight=1, maintainOffset=False)
+            if not cam_grp:
+                cmds.parentConstraint(camera, direcLight_grpName, weight=1, maintainOffset=False)
+            else:
+                cmds.parentConstraint(cam_grp, direcLight_grpName, weight=1, maintainOffset=False)
 
 def createDirectlight():
 

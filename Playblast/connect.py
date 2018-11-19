@@ -2,7 +2,7 @@ import sys
 import getpass
 import os
 
-import shotgun_api3
+from Shotgun import shotgun_api3
 
 domain_link = 'https://m2a.shotgunstudio.com'
 login       = 'seveneleven'
