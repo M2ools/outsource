@@ -43,7 +43,7 @@ global proc shelf_M2animation () {
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "from Xplorer import setImportor\nreload(setImportor)\n\nmainWin = setImportor.getMayaWindow()\nconApp = setImportor.setImportor(mainWin)\n\n"
+        -annotation "from Xplorer import loadSet\nreload(setImportor)\n\nmainWin = setImportor.getMayaWindow()\nconApp = setImportor.setImportor(mainWin)\n\n"
         -enableBackground 0
         -align "center" 
         -label "loadSet" 
@@ -74,7 +74,7 @@ global proc shelf_M2animation () {
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "from Xplorer import memeLooks\nreload(memeLooks)\n\nmemeLooks.loadLooks()\n"
+        -annotation "from Xplorer import loadLooks\nreload(memeLooks)\n\nmemeLooks.loadLooks()\n"
         -enableBackground 0
         -align "center" 
         -label "loadLooks" 
