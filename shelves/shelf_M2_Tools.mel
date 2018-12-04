@@ -30,7 +30,7 @@ global proc shelf_M2animation () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "# --- memePlayblast Script ---\n\nfrom memePlayblast import playblastOptions\nreload(playblastOptions)\n\nmov_path = playblastOptions.run()\nresult = cmds.confirmDialog( title='Playblast', message='Finish.', button=['OK'])\nif result:\n    import subprocess\n    subprocess.Popen('explorer /select,\"%s\"' %mov_path[0][0].replace('/','\\\\'))\n\n# --- end ---" 
+        -command "# --- Playblast Script ---\n\nfrom Playblast import playblastOptions\nreload(playblastOptions)\n\nmov_path = playblastOptions.run()\nresult = cmds.confirmDialog( title='Playblast', message='Finish.', button=['OK'])\nif result:\n    import subprocess\n    subprocess.Popen('explorer /select,\"%s\"' %mov_path[0][0].replace('/','\\\\'))\n\n# --- end ---" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
@@ -97,4 +97,5 @@ global proc shelf_M2animation () {
         -commandRepeatable 1
         -flat 1
     ;
+
 } 
