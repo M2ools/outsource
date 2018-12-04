@@ -8,6 +8,7 @@ reload(viewportDisplay)
 
 PROCESSCODE_TO_TASK = {'LAY': 'layout',
                        'ANM': 'animation',
+                       'BLK': 'blocking',
                        'A2D': 'anim2D',
                        'LGT': 'light',
                        'REN': 'render',
